@@ -1,0 +1,42 @@
+title: 個人網站
+description: 專業的軟體開發者個人網站
+baseurl: ""
+url: ""
+
+# 構建設定
+markdown: kramdown
+permalink: pretty
+
+# 集合
+collections:
+  experiences:
+    output: true
+    permalink: /experiences/:path/
+
+# 默認佈局
+defaults:
+  - scope:
+      path: ""
+      type: "experiences"
+    values:
+      layout: "experience"
+
+# 插件
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# 排除檔案
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .gitignore
+
+# 樣式設定
+sass:
+  style: compressed
+  load_paths:
+    - _sass
+    - assets/css 

@@ -1,0 +1,37 @@
+categories:
+  - name: 前端開發
+    skills:
+      - name: HTML5
+        icon: fab fa-html5
+      - name: CSS3
+        icon: fab fa-css3-alt
+      - name: JavaScript
+        icon: fab fa-js
+      - name: Bootstrap
+        icon: fab fa-bootstrap
+
+  - name: 後端開發
+    skills:
+      - name: Python
+        icon: fab fa-python
+      - name: Flask
+        icon: fas fa-flask
+      - name: FastAPI
+        icon: fas fa-bolt
+      - name: PHP
+        icon: fab fa-php
+
+  - name: 資料庫
+    skills:
+      - name: MySQL
+        icon: fas fa-database
+      - name: SQLite
+        icon: fas fa-database
+
+  - name: 開發工具
+    skills:
+      - name: Git
+        icon: fab fa-git-alt
+      - name: Docker
+        icon: fab fa-docker
+ 

@@ -1,0 +1,161 @@
+---
+layout: default
+title: 預約諮詢
+---
+
+<section class="booking-section">
+  <div class="container">
+    <h1 class="section-title text-center">預約諮詢</h1>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card shadow-sm">
+          <div class="card-body p-4">
+            <form id="bookingForm" class="needs-validation" novalidate>
+              <div class="mb-4">
+                <label for="name" class="form-label">姓名</label>
+                <input type="text" class="form-control" id="name" required>
+                <div class="invalid-feedback">
+                  請輸入您的姓名
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label for="email" class="form-label">電子郵件</label>
+                <input type="email" class="form-control" id="email" required>
+                <div class="invalid-feedback">
+                  請輸入有效的電子郵件地址
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label for="phone" class="form-label">聯絡電話</label>
+                <input type="tel" class="form-control" id="phone" required>
+                <div class="invalid-feedback">
+                  請輸入您的聯絡電話
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label for="date" class="form-label">預約日期</label>
+                <input type="date" class="form-control" id="date" required>
+                <div class="invalid-feedback">
+                  請選擇預約日期
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label for="time" class="form-label">預約時間</label>
+                <select class="form-select" id="time" required>
+                  <option value="">請選擇時間</option>
+                  <option value="09:00">09:00</option>
+                  <option value="10:00">10:00</option>
+                  <option value="11:00">11:00</option>
+                  <option value="14:00">14:00</option>
+                  <option value="15:00">15:00</option>
+                  <option value="16:00">16:00</option>
+                </select>
+                <div class="invalid-feedback">
+                  請選擇預約時間
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label for="consultationType" class="form-label">諮詢類型</label>
+                <select class="form-select" id="consultationType" required>
+                  <option value="">請選擇諮詢類型</option>
+                  <option value="career">職涯規劃</option>
+                  <option value="technical">技術諮詢</option>
+                  <option value="project">專案合作</option>
+                  <option value="other">其他</option>
+                </select>
+                <div class="invalid-feedback">
+                  請選擇諮詢類型
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label for="message" class="form-label">諮詢內容</label>
+                <textarea class="form-control" id="message" rows="4" required></textarea>
+                <div class="invalid-feedback">
+                  請描述您的諮詢內容
+                </div>
+              </div>
+
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg px-5">
+                  送出預約
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('bookingForm');
+  
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    if (!form.checkValidity()) {
+      event.stopPropagation();
+      form.classList.add('was-validated');
+      return;
+    }
+
+    // 這裡可以添加表單提交的邏輯
+    const formData = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      date: document.getElementById('date').value,
+      time: document.getElementById('time').value,
+      consultationType: document.getElementById('consultationType').value,
+      message: document.getElementById('message').value
+    };
+
+    // 顯示成功訊息
+    alert('預約成功！我們會盡快與您聯繫。');
+    form.reset();
+    form.classList.remove('was-validated');
+  });
+});
+</script>
+
+<style>
+.booking-section {
+  padding: 6rem 0;
+  background-color: #f8f9fa;
+}
+
+.card {
+  border: none;
+  border-radius: 1rem;
+}
+
+.form-control, .form-select {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #dee2e6;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.btn-primary {
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+</style> 

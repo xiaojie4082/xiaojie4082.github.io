@@ -1,0 +1,23 @@
+- title: 靜宜小幫手 Discord Bot
+  description: |
+     為靜宜大學學生開發的 Discord 聊天機器人，整合校園資訊、氣象與交通查詢等功能，提升學生便利性。採用模組化設計，支援 AI 問答與多種自訂指令。
+  image: /assets/images/projects/pu_discord_bot.jpg
+  tags:
+    - Python
+    - Discord API
+    - OpenAI API
+    - Google API
+  link: https://github.com/xiaojie4082/PU_Discord_Bot
+
+- title: 台中公車即時查詢系統
+  description: |
+    提供台中市公車路線即時到站資訊查詢，支援深色/淺色主題與響應式設計。
+    系統每分鐘自動更新公車動態，顯示進站狀態及到站時間，介面友善易用。
+  image: /assets/images/projects/taichung_bus.jpg
+  tags:
+    - HTML5
+    - CSS3
+    - JavaScript
+    - Bootstrap
+    - TDX API
+  link: https://xiaojie4082.github.io/Taichung_Bus/
