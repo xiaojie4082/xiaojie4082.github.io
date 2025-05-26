@@ -3,6 +3,86 @@ layout: default
 title: 首頁
 ---
 
+<!-- SEO Meta 標籤 -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="XIAOJIE4082 的個人網站 - 展示我的開發作品和專業技能">
+  <link rel="canonical" href="https://xiaojie4082.github.io/" />
+  <meta property="og:url" content="https://xiaojie4082.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="XIAOJIE4082 的個人網站" />
+  <meta property="og:description" content="展示我的開發作品和專業技能" />
+  <meta property="og:image" content="https://xiaojie4082.github.io/assets/images/profile.jpg" />
+  <meta property="og:site_name" content="XIAOJIE4082 的個人網站" />
+  
+  <!-- 結構化資料 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "XIAOJIE4082",
+    "url": "https://xiaojie4082.github.io",
+    "image": "https://xiaojie4082.github.io/assets/images/profile.jpg",
+    "sameAs": [
+      "https://github.com/xiaojie4082",
+      "https://linkedin.com/in/xiaojie4082"
+    ],
+    "jobTitle": "開發者",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "XIAOJIE4082"
+    },
+    "description": "一名熱衷學習與實踐的開發者，專注於技術創新與專案實作，致力於將創意轉化為具體成果。",
+    "knowsAbout": [
+      "網頁開發",
+      "前端開發",
+      "後端開發",
+      "資料庫設計",
+      "API 開發"
+    ],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "國立澎湖科技大學",
+      "url": "https://www.npu.edu.tw"
+    }
+  }
+  </script>
+  
+  <!-- 關鍵 CSS 內聯 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<!-- 導航欄 -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="#about">XIAOJIE4082</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="切換導航選單">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#about">關於我</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#education">教育經歷</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#experience">工作經驗</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#projects">專案作品</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#skills">專業技能</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <!-- 個人資料區塊 -->
 <section id="about" class="profile-section">
   <div class="container">
@@ -49,9 +129,9 @@ title: 首頁
             <p class="mb-2"><strong>主修：</strong>{{ edu.major }}</p>
             <p class="mb-0">{{ edu.description }}</p>
           </div>
-          <div class="education-image">
+          <!-- <div class="education-image">
             <img src="{{ edu.image }}" alt="{{ edu.institution }}" class="school-photo">
-          </div>
+          </div> -->
         </div>
       </div>
       {% endfor %}
@@ -91,9 +171,8 @@ title: 首頁
       {% for project in site.data.projects %}
       <div class="col-md-6 col-lg-4">
         <div class="project-card">
-          <!-- <img src="{{ project.image }}" alt="{{ project.title }}" class="project-image"> -->
           <div class="project-content">
-            <h3 class="h5 mb-3">{{ project.title }}</h3>
+            <h3 class="h4 mb-3">{{ project.title }}</h3>
             <p class="mb-3">{{ project.description }}</p>
             <div class="project-tags">
               {% for tag in project.tags %}
@@ -101,7 +180,7 @@ title: 首頁
               {% endfor %}
             </div>
             {% if project.link %}
-            <a href="{{ project.link }}" class="btn btn-outline-primary mt-3" target="_blank">
+            <a href="{{ project.link }}" class="btn btn-outline-primary mt-3" target="_blank" aria-label="查看 {{ project.title }} 專案">
               查看專案 <i class="bi bi-arrow-right"></i>
             </a>
             {% endif %}
@@ -121,11 +200,11 @@ title: 首頁
       {% for category in site.data.skills.categories %}
       <div class="col-md-6 col-lg-4">
         <div class="skill-category">
-          <h3 class="h5 mb-4">{{ category.name }}</h3>
+          <h3 class="h4 mb-4">{{ category.name }}</h3>
           <div class="skill-tags">
             {% for skill in category.skills %}
             <div class="skill-tag">
-              <i class="{{ skill.icon }}"></i>
+              <i class="{{ skill.icon }}" aria-hidden="true"></i>
               <span>{{ skill.name }}</span>
             </div>
             {% endfor %}
@@ -138,7 +217,3 @@ title: 首頁
 </section>
 
     </main>
-
-    <!-- 資源載入 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
