@@ -1,29 +1,36 @@
 /* =====================
-   CSS 變數 / 全局設定
+   CSS 變數
    ===================== */
 :root {
-  --primary-color: #1a56db;
-  --secondary-color: #1e40af;
-  --accent-color: #6366f1;
-  --text-color: #111827;
-  --text-muted: #6b7280;
-  --light-bg: #f3f4f6;
-  --section-padding: 5rem 0;
-  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --card-shadow-hover: 0 20px 30px -8px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.07);
-  --transition: all 0.3s ease;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --accent: #7c3aed;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --bg-white: #ffffff;
+  --bg-light: #f8faff;
+  /* 淺藍白 */
+  --bg-slate: #f1f5f9;
+  /* 石板灰 */
+  --bg-dark: #0f172a;
+  /* 深海軍藍 */
+  --border: rgba(0, 0, 0, 0.08);
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --card-shadow-hover: 0 20px 30px -8px rgba(0, 0, 0, 0.14), 0 8px 16px -4px rgba(0, 0, 0, 0.07);
+  --transition: all 0.28s ease;
   --radius: 1rem;
 }
 
 /* =====================
-   基礎 Body
+   Base
    ===================== */
 body {
   font-family: 'Noto Sans TC', sans-serif;
-  color: var(--text-color);
-  line-height: 1.7;
+  color: var(--text);
+  line-height: 1.75;
   padding-top: 76px;
   scroll-behavior: smooth;
+  background: var(--bg-white);
 }
 
 /* =====================
@@ -32,20 +39,20 @@ body {
 .navbar {
   transition: var(--transition);
   padding: 1rem 0;
+  background: rgba(255, 255, 255, 0.98) !important;
 }
 
 .navbar-scrolled {
-  background: rgba(255, 255, 255, 0.96) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08) !important;
 }
 
 .navbar-brand {
   font-weight: 800;
-  font-size: 1.4rem;
-  letter-spacing: 0.05em;
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  background: linear-gradient(120deg, var(--primary), var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -54,7 +61,7 @@ body {
 .nav-link {
   font-weight: 500;
   padding: 0.5rem 1rem !important;
-  color: var(--text-color) !important;
+  color: var(--text) !important;
   transition: var(--transition);
   position: relative;
 }
@@ -62,32 +69,87 @@ body {
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: 2px;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background: var(--primary-color);
+  background: var(--primary);
   border-radius: 2px;
-  transition: width 0.3s ease;
+  transition: width 0.28s ease;
 }
 
 .nav-link:hover::after,
 .nav-link.active::after {
-  width: 60%;
+  width: 55%;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--primary-color) !important;
+  color: var(--primary) !important;
 }
 
 /* =====================
-   Hero 個人資料區塊
+   Section 色彩節奏
+   #about      → 深色 Hero (dark)
+   #education  → 白色 (white)
+   #experience → 石板灰 (slate)
+   #projects   → 淺藍白 (light)
+   #skills     → 白色 (white)
+   ===================== */
+section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+/* 教育經歷 白底 */
+#education {
+  background: var(--bg-white);
+}
+
+/* 工作經驗 石板灰 */
+#experience {
+  background: var(--bg-slate);
+}
+
+/* 專案作品 淺藍白 */
+#projects {
+  background: var(--bg-light);
+}
+
+/* 技能 白底 */
+#skills,
+.skills-section {
+  background: var(--bg-white);
+}
+
+.section-title {
+  position: relative;
+  margin-bottom: 3.5rem;
+  padding-bottom: 1rem;
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--text);
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 2px;
+}
+
+/* =====================
+   Hero (About)
    ===================== */
 .profile-section {
-  padding: var(--section-padding);
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1a56db 100%);
+  padding: 5rem 0 7rem;
+  background: linear-gradient(140deg, #0f172a 0%, #1e3a5f 55%, #2563eb 100%);
   position: relative;
   overflow: hidden;
   color: white;
@@ -97,24 +159,24 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.25) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(26, 86, 219, 0.2) 0%, transparent 50%);
+  background:
+    radial-gradient(ellipse at 15% 85%, rgba(124, 58, 237, 0.28) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 15%, rgba(37, 99, 235, 0.22) 0%, transparent 50%);
   pointer-events: none;
 }
 
+/* 白色波浪底部 */
 .profile-section::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 80px;
-  background: white;
+  height: 90px;
+  background: var(--bg-white);
   clip-path: ellipse(55% 100% at 50% 100%);
 }
 
-/* 讓 hero 內容在白色波浪前面 */
 .profile-section .container {
   position: relative;
   z-index: 2;
@@ -125,8 +187,8 @@ body {
 }
 
 .profile-section .lead {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.1rem;
 }
 
 /* =====================
@@ -136,15 +198,13 @@ body {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.2), var(--card-shadow);
-  border: 4px solid rgba(255, 255, 255, 0.6);
-  color: white;
-  transition: var(--transition);
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.18), var(--card-shadow);
+  border: 4px solid rgba(255, 255, 255, 0.55);
 }
 
 .profile-image {
@@ -152,7 +212,7 @@ body {
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid rgba(255, 255, 255, 0.6);
+  border: 4px solid rgba(255, 255, 255, 0.55);
   box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.15), var(--card-shadow);
   transition: var(--transition);
 }
@@ -163,21 +223,21 @@ body {
 }
 
 /* =====================
-   統計數字卡片
+   統計卡片
    ===================== */
 .profile-stats {
   background: white;
   border-radius: var(--radius);
   padding: 1.5rem;
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   margin-top: 2rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .stat-item {
   text-align: center;
   padding: 1rem;
-  border-right: 1px solid #e5e7eb;
+  border-right: 1px solid #e2e8f0;
   transition: var(--transition);
 }
 
@@ -185,51 +245,23 @@ body {
   border-right: none;
 }
 
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 0.2rem;
+  display: inline-block;
+  transition: var(--transition);
+}
+
 .stat-item:hover .stat-number {
   transform: scale(1.1);
 }
 
-.stat-number {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--primary-color);
-  margin-bottom: 0.25rem;
-  transition: var(--transition);
-  display: inline-block;
-}
-
 .stat-label {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
   font-weight: 500;
-}
-
-/* =====================
-   各 Section 通用
-   ===================== */
-section {
-  padding: var(--section-padding);
-  position: relative;
-}
-
-.section-title {
-  position: relative;
-  margin-bottom: 3.5rem;
-  padding-bottom: 1rem;
-  font-weight: 800;
-  font-size: 2rem;
-}
-
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-  border-radius: 2px;
 }
 
 /* =====================
@@ -248,7 +280,7 @@ section {
   transform: translateX(-50%);
   width: 2px;
   height: 100%;
-  background: linear-gradient(to bottom, var(--primary-color), #e5e7eb);
+  background: linear-gradient(to bottom, var(--primary), #e2e8f0);
 }
 
 .timeline-item {
@@ -256,7 +288,6 @@ section {
   position: relative;
 }
 
-/* 時間軸節點 */
 .timeline-item::before {
   content: '';
   position: absolute;
@@ -266,68 +297,55 @@ section {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: var(--primary-color);
+  background: var(--primary);
   border: 3px solid white;
-  box-shadow: 0 0 0 3px var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary);
   z-index: 1;
   transition: var(--transition);
 }
 
 .timeline-item:hover::before {
-  background: var(--accent-color);
-  box-shadow: 0 0 0 4px var(--accent-color);
-  transform: translateX(-50%) scale(1.2);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent);
+  transform: translateX(-50%) scale(1.25);
 }
 
 /* =====================
-   工作經驗卡片
+   工作經驗卡片 (石板灰區塊內)
    ===================== */
 .timeline-content {
-  background: white;
+  background: var(--bg-white);
   border-radius: var(--radius);
   padding: 2rem;
   box-shadow: var(--card-shadow);
   transition: var(--transition);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  position: relative;
+  border: 1px solid var(--border);
 }
 
 .timeline-content:hover {
   transform: translateY(-6px);
   box-shadow: var(--card-shadow-hover);
-  border-color: rgba(26, 86, 219, 0.15);
-}
-
-.timeline-date {
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: white;
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-  display: inline-block;
-  padding: 0.25rem 0.8rem;
-  border-radius: 2rem;
-  margin-bottom: 0.75rem;
-  letter-spacing: 0.02em;
+  border-color: rgba(37, 99, 235, 0.18);
 }
 
 /* =====================
-   教育經歷卡片
+   教育經歷卡片 (白底區塊內)
    ===================== */
 .education-timeline-content {
-  background: white;
+  background: var(--bg-light);
   border-radius: var(--radius);
   padding: 2rem;
   box-shadow: var(--card-shadow);
   transition: var(--transition);
   display: flex;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e7ff;
 }
 
 .education-timeline-content:hover {
   transform: translateY(-6px);
   box-shadow: var(--card-shadow-hover);
-  border-color: rgba(26, 86, 219, 0.15);
+  border-color: rgba(37, 99, 235, 0.22);
 }
 
 .education-info {
@@ -355,22 +373,37 @@ section {
 }
 
 /* =====================
-   專案卡片
+   日期標籤
+   ===================== */
+.timeline-date {
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: white;
+  background: linear-gradient(120deg, var(--primary), var(--accent));
+  display: inline-block;
+  padding: 0.2rem 0.8rem;
+  border-radius: 2rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+/* =====================
+   專案卡片 (淺藍白區塊內)
    ===================== */
 .project-card {
-  background: white;
+  background: var(--bg-white);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--card-shadow);
   transition: var(--transition);
   height: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid #e0e7ff;
 }
 
 .project-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--card-shadow-hover);
-  border-color: rgba(26, 86, 219, 0.15);
+  border-color: rgba(37, 99, 235, 0.25);
 }
 
 .project-image {
@@ -385,7 +418,7 @@ section {
 
 .project-content h3 {
   font-weight: 700;
-  color: var(--text-color);
+  color: var(--text);
 }
 
 .project-tags {
@@ -399,59 +432,58 @@ section {
   display: inline-block;
   padding: 0.2rem 0.7rem;
   background: #eff6ff;
-  color: var(--primary-color);
+  color: var(--primary);
   border-radius: 2rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  border: 1px solid rgba(26, 86, 219, 0.15);
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid #bfdbfe;
   transition: var(--transition);
 }
 
 .project-tag:hover {
-  background: var(--primary-color);
+  background: var(--primary);
   color: white;
+  border-color: var(--primary);
 }
 
 .btn-outline-primary {
-  border-width: 2px;
+  border: 2px solid var(--primary);
+  color: var(--primary);
   font-weight: 600;
-  font-size: 0.9rem;
-  padding: 0.45rem 1.2rem;
+  font-size: 0.88rem;
+  padding: 0.4rem 1.2rem;
   border-radius: 2rem;
   transition: var(--transition);
 }
 
 .btn-outline-primary:hover {
+  background: var(--primary);
+  color: white;
   transform: translateX(4px);
 }
 
 /* =====================
-   技能區塊
+   技能卡片 (白底區塊內)
    ===================== */
-.skills-section {
-  padding: var(--section-padding);
-  background: #f8fafc;
-}
-
 .skill-category {
-  background: white;
+  background: var(--bg-light);
   border-radius: var(--radius);
   padding: 1.75rem;
   box-shadow: var(--card-shadow);
   margin-bottom: 2rem;
   transition: var(--transition);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e7ff;
 }
 
 .skill-category:hover {
   transform: translateY(-5px);
   box-shadow: var(--card-shadow-hover);
-  border-color: rgba(26, 86, 219, 0.1);
+  border-color: rgba(37, 99, 235, 0.22);
 }
 
 .skill-category h3 {
   font-weight: 700;
-  color: var(--text-color);
+  color: var(--text);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -462,8 +494,9 @@ section {
   display: inline-block;
   width: 4px;
   height: 20px;
-  background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+  background: linear-gradient(to bottom, var(--primary), var(--accent));
   border-radius: 2px;
+  flex-shrink: 0;
 }
 
 .skill-tags {
@@ -475,71 +508,116 @@ section {
 .skill-tag {
   display: inline-flex;
   align-items: center;
-  padding: 0.5rem 1rem;
-  background: var(--light-bg);
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  background: white;
   border-radius: 2rem;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--text-color);
+  color: var(--text);
+  border: 1px solid #cbd5e1;
   transition: var(--transition);
-  border: 1px solid transparent;
 }
 
 .skill-tag:hover {
-  background: var(--primary-color);
+  background: var(--primary);
   color: white;
+  border-color: var(--primary);
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(26, 86, 219, 0.35);
-  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.32);
 }
 
 .skill-tag i {
-  margin-right: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   transition: var(--transition);
-}
-
-.skill-tag:hover i {
-  color: white;
 }
 
 /* =====================
-   頁尾
+   頁尾（深色）
    ===================== */
 .footer {
-  background: #0f172a;
-  color: rgba(255, 255, 255, 0.75);
-  padding: 4rem 0;
-  border-top: none;
-}
-
-.footer h5 {
-  color: white;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  letter-spacing: 0.03em;
-}
-
-.footer p {
+  background: var(--bg-dark);
   color: rgba(255, 255, 255, 0.65);
-  margin-bottom: 0.5rem;
+  padding: 4rem 0 3rem;
 }
 
-.footer p a {
-  color: rgba(255, 255, 255, 0.75);
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-.footer p a:hover {
+.footer-brand {
+  font-size: 1.4rem;
+  font-weight: 800;
   color: white;
+  letter-spacing: 0.05em;
 }
 
+.footer-brand span {
+  font-size: 0.85rem;
+  font-weight: 400;
+  opacity: 0.55;
+  margin-left: 4px;
+}
+
+.footer-bio {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.footer-heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 1rem;
+}
+
+/* 聯絡資訊條目 */
+.footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.65rem;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: var(--transition);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.footer-contact-item:hover {
+  background: rgba(37, 99, 235, 0.25);
+  border-color: rgba(37, 99, 235, 0.45);
+  color: white;
+  transform: translateX(4px);
+}
+
+.footer-contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 社群連結 */
 .social-links {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .social-links a {
@@ -549,26 +627,24 @@ section {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 1.1rem;
   transition: var(--transition);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .social-links a:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* GitHub 品牌色 */
 .social-links a.github-link:hover {
   background: #24292e;
   color: white;
   border-color: #24292e;
 }
 
-/* Instagram 品牌色 */
 .social-links a.instagram-link:hover {
   background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
   color: white;
@@ -576,13 +652,13 @@ section {
 }
 
 .footer hr {
-  margin: 2rem 0;
+  margin: 2.5rem 0 1.5rem;
   border-color: rgba(255, 255, 255, 0.1);
 }
 
 .footer .copyright {
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.82rem;
 }
 
 /* =====================
@@ -595,15 +671,15 @@ section {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  background: linear-gradient(135deg, var(--primary), var(--accent));
   color: white;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(26, 86, 219, 0.4);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.45);
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -617,16 +693,16 @@ section {
 
 #scrollTopBtn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(26, 86, 219, 0.5);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.55);
 }
 
 /* =====================
-   Scroll-triggered 動畫
+   動畫
    ===================== */
 .fade-up {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
 }
 
 .fade-up.visible {
@@ -634,19 +710,20 @@ section {
   transform: translateY(0);
 }
 
-.fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
 }
 
 .animate-fade-in {
@@ -654,7 +731,7 @@ section {
 }
 
 /* =====================
-   其餘元素
+   Misc
    ===================== */
 .btn {
   padding: 0.75rem 2rem;
@@ -663,41 +740,16 @@ section {
   transition: var(--transition);
 }
 
-.btn-light {
-  background: white;
-  color: var(--primary-color);
-}
-
-.btn-light:hover {
-  background: rgba(255, 255, 255, 0.92);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-}
-
-.btn-outline-light {
-  border-width: 2px;
-}
-
-.btn-outline-light:hover {
-  background: white;
-  color: var(--primary-color);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-}
-
-/* =====================
-   圖片 Placeholder
-   ===================== */
 .project-image-placeholder {
   width: 100%;
   height: 200px;
-  background: var(--light-bg);
+  background: var(--bg-light);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary-color);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  color: var(--primary);
   font-size: 2.5rem;
+  border-bottom: 1px solid #e0e7ff;
 }
 
 .school-image {
@@ -710,8 +762,8 @@ section {
   justify-content: center;
   margin: 0 auto;
   box-shadow: var(--card-shadow);
-  border: 3px solid var(--primary-color);
-  color: var(--primary-color);
+  border: 3px solid var(--primary);
+  color: var(--primary);
   transition: var(--transition);
 }
 
@@ -721,15 +773,21 @@ section {
 }
 
 /* =====================
-   響應式設計
+   響應式
    ===================== */
 @media (max-width: 992px) {
   .profile-section::after {
-    height: 50px;
+    height: 55px;
+  }
+
+  .footer-contact-item {
+    font-size: 0.82rem;
+    padding: 0.55rem 0.85rem;
   }
 }
 
 @media (max-width: 768px) {
+
   .profile-image,
   .profile-image-placeholder {
     width: 160px;
@@ -770,7 +828,7 @@ section {
 
   .stat-item {
     border-right: none;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e2e8f0;
     padding: 0.75rem 0;
   }
 
@@ -783,17 +841,20 @@ section {
   }
 
   .footer {
-    padding: 3rem 0;
+    padding: 3rem 0 2rem;
   }
 
   .social-links {
+    justify-content: center !important;
     margin-top: 1.5rem;
-    justify-content: center;
   }
 
   .footer .text-lg-end {
     text-align: center !important;
-    margin-top: 2rem;
+  }
+
+  .footer-contact-item {
+    justify-content: center;
   }
 
   #scrollTopBtn {
