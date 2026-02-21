@@ -1,37 +1,54 @@
-/* 全局樣式 */
+/* =====================
+   CSS 變數 / 全局設定
+   ===================== */
 :root {
   --primary-color: #1a56db;
   --secondary-color: #1e40af;
+  --accent-color: #6366f1;
   --text-color: #111827;
+  --text-muted: #6b7280;
   --light-bg: #f3f4f6;
   --section-padding: 5rem 0;
   --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --card-shadow-hover: 0 20px 30px -8px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.07);
   --transition: all 0.3s ease;
+  --radius: 1rem;
 }
 
+/* =====================
+   基礎 Body
+   ===================== */
 body {
   font-family: 'Noto Sans TC', sans-serif;
   color: var(--text-color);
-  line-height: 1.6;
+  line-height: 1.7;
   padding-top: 76px;
+  scroll-behavior: smooth;
 }
 
-/* 導航欄樣式 */
+/* =====================
+   導航欄
+   ===================== */
 .navbar {
   transition: var(--transition);
   padding: 1rem 0;
 }
 
 .navbar-scrolled {
-  background: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(10px);
-  box-shadow: var(--card-shadow);
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
 }
 
 .navbar-brand {
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--primary-color) !important;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .nav-link {
@@ -39,29 +56,95 @@ body {
   padding: 0.5rem 1rem !important;
   color: var(--text-color) !important;
   transition: var(--transition);
+  position: relative;
 }
 
-.nav-link:hover {
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 60%;
+}
+
+.nav-link:hover,
+.nav-link.active {
   color: var(--primary-color) !important;
 }
 
-/* 個人資料區塊 */
+/* =====================
+   Hero 個人資料區塊
+   ===================== */
 .profile-section {
   padding: var(--section-padding);
-  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1a56db 100%);
   position: relative;
   overflow: hidden;
+  color: white;
 }
 
 .profile-section::before {
   content: '';
   position: absolute;
-  top: 0;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(26, 86, 219, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.profile-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: url('/assets/images/pattern.svg') repeat;
-  opacity: 0.1;
+  height: 80px;
+  background: white;
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+/* 讓 hero 內容在白色波浪前面 */
+.profile-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.profile-section h1 {
+  color: white;
+}
+
+.profile-section .lead {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.15rem;
+}
+
+/* =====================
+   大頭貼
+   ===================== */
+.profile-image-placeholder {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.2), var(--card-shadow);
+  border: 4px solid rgba(255, 255, 255, 0.6);
+  color: white;
+  transition: var(--transition);
 }
 
 .profile-image {
@@ -69,43 +152,61 @@ body {
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid white;
-  box-shadow: var(--card-shadow);
+  border: 4px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.15), var(--card-shadow);
   transition: var(--transition);
 }
 
 .profile-image:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.25), var(--card-shadow-hover);
 }
 
+/* =====================
+   統計數字卡片
+   ===================== */
 .profile-stats {
   background: white;
-  border-radius: 1rem;
+  border-radius: var(--radius);
   padding: 1.5rem;
   box-shadow: var(--card-shadow);
   margin-top: 2rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .stat-item {
   text-align: center;
   padding: 1rem;
   border-right: 1px solid #e5e7eb;
+  transition: var(--transition);
 }
 
 .stat-item:last-child {
   border-right: none;
 }
 
-.stat-number {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
+.stat-item:hover .stat-number {
+  transform: scale(1.1);
 }
 
-/* 區塊通用樣式 */
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: 0.25rem;
+  transition: var(--transition);
+  display: inline-block;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* =====================
+   各 Section 通用
+   ===================== */
 section {
   padding: var(--section-padding);
   position: relative;
@@ -113,9 +214,10 @@ section {
 
 .section-title {
   position: relative;
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
   padding-bottom: 1rem;
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 2rem;
 }
 
 .section-title::after {
@@ -124,13 +226,15 @@ section {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
+  width: 50px;
   height: 4px;
-  background: var(--primary-color);
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
   border-radius: 2px;
 }
 
-/* 時間軸樣式 */
+/* =====================
+   時間軸
+   ===================== */
 .timeline {
   position: relative;
   padding: 2rem 0;
@@ -144,48 +248,86 @@ section {
   transform: translateX(-50%);
   width: 2px;
   height: 100%;
-  background: #e5e7eb;
+  background: linear-gradient(to bottom, var(--primary-color), #e5e7eb);
 }
 
 .timeline-item {
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   position: relative;
 }
 
-/* 工作經驗樣式 */
-.timeline-content {
-  background: white;
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: var(--card-shadow);
+/* 時間軸節點 */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  border: 3px solid white;
+  box-shadow: 0 0 0 3px var(--primary-color);
+  z-index: 1;
   transition: var(--transition);
 }
 
+.timeline-item:hover::before {
+  background: var(--accent-color);
+  box-shadow: 0 0 0 4px var(--accent-color);
+  transform: translateX(-50%) scale(1.2);
+}
+
+/* =====================
+   工作經驗卡片
+   ===================== */
+.timeline-content {
+  background: white;
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
 .timeline-content:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(26, 86, 219, 0.15);
 }
 
 .timeline-date {
   font-weight: 600;
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: white;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  display: inline-block;
+  padding: 0.25rem 0.8rem;
+  border-radius: 2rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
 }
 
-/* 教育經歷樣式 */
+/* =====================
+   教育經歷卡片
+   ===================== */
 .education-timeline-content {
   background: white;
-  border-radius: 1rem;
+  border-radius: var(--radius);
   padding: 2rem;
   box-shadow: var(--card-shadow);
   transition: var(--transition);
   display: flex;
   overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .education-timeline-content:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(26, 86, 219, 0.15);
 }
 
 .education-info {
@@ -212,20 +354,23 @@ section {
   transform: scale(1.1);
 }
 
-/* 專案卡片樣式 */
+/* =====================
+   專案卡片
+   ===================== */
 .project-card {
   background: white;
-  border-radius: 1rem;
+  border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--card-shadow);
   transition: var(--transition);
   height: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(26, 86, 219, 0.15);
 }
 
 .project-image {
@@ -235,26 +380,54 @@ section {
 }
 
 .project-content {
-  padding: 1.5rem;
+  padding: 1.75rem;
+}
+
+.project-content h3 {
+  font-weight: 700;
+  color: var(--text-color);
 }
 
 .project-tags {
   margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
 }
 
 .project-tag {
   display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background: #e5e7eb;
-  border-radius: 1rem;
-  font-size: 0.875rem;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-  color: var(--text-color);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.2rem 0.7rem;
+  background: #eff6ff;
+  color: var(--primary-color);
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(26, 86, 219, 0.15);
+  transition: var(--transition);
 }
 
-/* 技能區塊樣式 */
+.project-tag:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn-outline-primary {
+  border-width: 2px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.45rem 1.2rem;
+  border-radius: 2rem;
+  transition: var(--transition);
+}
+
+.btn-outline-primary:hover {
+  transform: translateX(4px);
+}
+
+/* =====================
+   技能區塊
+   ===================== */
 .skills-section {
   padding: var(--section-padding);
   background: #f8fafc;
@@ -262,22 +435,41 @@ section {
 
 .skill-category {
   background: white;
-  border-radius: 1rem;
-  padding: 1.5rem;
+  border-radius: var(--radius);
+  padding: 1.75rem;
   box-shadow: var(--card-shadow);
   margin-bottom: 2rem;
   transition: var(--transition);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .skill-category:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(26, 86, 219, 0.1);
+}
+
+.skill-category h3 {
+  font-weight: 700;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-category h3::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
 }
 
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.6rem;
 }
 
 .skill-tag {
@@ -287,85 +479,61 @@ section {
   background: var(--light-bg);
   border-radius: 2rem;
   font-size: 0.875rem;
+  font-weight: 500;
   color: var(--text-color);
   transition: var(--transition);
+  border: 1px solid transparent;
 }
 
 .skill-tag:hover {
   background: var(--primary-color);
   color: white;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(26, 86, 219, 0.35);
+  border-color: var(--primary-color);
 }
 
 .skill-tag i {
   margin-right: 0.5rem;
   font-size: 1.1rem;
-}
-
-/* 聯絡區塊樣式 */
-.contact {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  color: white;
-  position: relative;
-  overflow: hidden;
-}
-
-.contact::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-  opacity: 0.5;
-}
-
-.btn {
-  padding: 0.75rem 2rem;
-  font-weight: 500;
-  border-radius: 2rem;
   transition: var(--transition);
 }
 
-.btn-light {
-  background: white;
-  color: var(--primary-color);
+.skill-tag:hover i {
+  color: white;
 }
 
-.btn-light:hover {
-  background: rgba(255, 255, 255, 0.9);
-  transform: translateY(-2px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-
-.btn-outline-light {
-  border-width: 2px;
-}
-
-.btn-outline-light:hover {
-  background: white;
-  color: var(--primary-color);
-  transform: translateY(-2px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-
-/* 頁尾樣式 */
+/* =====================
+   頁尾
+   ===================== */
 .footer {
-  background: white;
-  border-top: 1px solid #e5e7eb;
+  background: #0f172a;
+  color: rgba(255, 255, 255, 0.75);
   padding: 4rem 0;
+  border-top: none;
 }
 
 .footer h5 {
-  color: var(--primary-color);
-  font-weight: 600;
+  color: white;
+  font-weight: 700;
   margin-bottom: 1rem;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
 }
 
 .footer p {
-  color: var(--text-color);
+  color: rgba(255, 255, 255, 0.65);
   margin-bottom: 0.5rem;
+}
+
+.footer p a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer p a:hover {
+  color: white;
 }
 
 .social-links {
@@ -378,50 +546,96 @@ section {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: var(--light-bg);
-  color: var(--text-color);
-  font-size: 1.25rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.2rem;
   transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .social-links a:hover {
-  background: var(--primary-color);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* GitHub 品牌色 */
+.social-links a.github-link:hover {
+  background: #24292e;
   color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-color: #24292e;
+}
+
+/* Instagram 品牌色 */
+.social-links a.instagram-link:hover {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: white;
+  border-color: transparent;
 }
 
 .footer hr {
   margin: 2rem 0;
-  border-color: #e5e7eb;
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .footer .copyright {
-  color: var(--text-color);
+  color: rgba(255, 255, 255, 0.4);
   font-size: 0.875rem;
 }
 
-@media (max-width: 768px) {
-  .footer {
-    padding: 3rem 0;
-  }
-  
-  .social-links {
-    margin-top: 1rem;
-  }
-  
-  .footer .text-lg-end {
-    text-align: center !important;
-    margin-top: 2rem;
-  }
+/* =====================
+   回頁頂按鈕
+   ===================== */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(26, 86, 219, 0.4);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* 動畫效果 */
+#scrollTopBtn.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#scrollTopBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(26, 86, 219, 0.5);
+}
+
+/* =====================
+   Scroll-triggered 動畫
+   ===================== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .fade-in {
-  animation: fadeIn 1s ease-in;
+  animation: fadeIn 0.6s ease-out forwards;
 }
 
 @keyframes fadeIn {
@@ -435,88 +649,57 @@ section {
   }
 }
 
-/* 響應式設計 */
-@media (max-width: 768px) {
-  .profile-image {
-    width: 150px;
-    height: 150px;
-  }
-
-  .timeline::before {
-    left: 0;
-  }
-
-  .timeline-content,
-  .education-timeline-content {
-    margin-left: 2rem;
-  }
-
-  .education-timeline-content {
-    flex-direction: column;
-  }
-
-  .education-image {
-    width: 100%;
-    height: 200px;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
-  }
-
-  .stat-item {
-    border-right: none;
-    border-bottom: 1px solid #e5e7eb;
-    padding: 1rem 0;
-  }
-
-  .stat-item:last-child {
-    border-bottom: none;
-  }
-
-  .section-title {
-    margin-bottom: 3rem;
-  }
-
-  .school-image {
-    width: 100px;
-    height: 100px;
-    margin-top: 1rem;
-  }
-
-  .skill-category {
-    margin-bottom: 1rem;
-  }
-}
-
 .animate-fade-in {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
-/* 預設圖片樣式 */
-.profile-image-placeholder {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+/* =====================
+   其餘元素
+   ===================== */
+.btn {
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  border-radius: 2rem;
+  transition: var(--transition);
+}
+
+.btn-light {
   background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  box-shadow: var(--card-shadow);
-  border: 4px solid white;
   color: var(--primary-color);
 }
 
+.btn-light:hover {
+  background: rgba(255, 255, 255, 0.92);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.btn-outline-light {
+  border-width: 2px;
+}
+
+.btn-outline-light:hover {
+  background: white;
+  color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* =====================
+   圖片 Placeholder
+   ===================== */
 .project-image-placeholder {
   width: 100%;
   height: 200px;
-  background: white;
+  background: var(--light-bg);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary-color);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 2.5rem;
 }
 
-/* 學校圖片樣式 */
 .school-image {
   width: 120px;
   height: 120px;
@@ -534,46 +717,48 @@ section {
 
 .school-image:hover {
   transform: scale(1.1);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--card-shadow-hover);
 }
 
-/* 教育經歷卡片樣式 */
-.education-card {
-  display: flex;
-  background: white;
-  border-radius: 1rem;
-  overflow: hidden;
-  position: relative;
-  box-shadow: var(--card-shadow);
+/* =====================
+   響應式設計
+   ===================== */
+@media (max-width: 992px) {
+  .profile-section::after {
+    height: 50px;
+  }
 }
 
-.education-info {
-  flex: 1;
-  position: relative;
-  z-index: 1;
-}
-
-.education-image {
-  width: 300px;
-  position: relative;
-  overflow: hidden;
-  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
-}
-
-.school-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: var(--transition);
-}
-
-.timeline-content:hover .school-photo {
-  transform: scale(1.1);
-}
-
-/* 響應式設計 */
 @media (max-width: 768px) {
-  .timeline-content {
+  .profile-image,
+  .profile-image-placeholder {
+    width: 160px;
+    height: 160px;
+  }
+
+  .profile-section h1 {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .timeline::before {
+    left: 8px;
+  }
+
+  .timeline-item::before {
+    left: 8px;
+  }
+
+  .timeline-content,
+  .education-timeline-content {
+    margin-left: 2.5rem;
+  }
+
+  .education-timeline-content {
     flex-direction: column;
   }
 
@@ -582,4 +767,39 @@ section {
     height: 200px;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
   }
-} 
+
+  .stat-item {
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0.75rem 0;
+  }
+
+  .stat-item:last-child {
+    border-bottom: none;
+  }
+
+  .skill-category {
+    margin-bottom: 1rem;
+  }
+
+  .footer {
+    padding: 3rem 0;
+  }
+
+  .social-links {
+    margin-top: 1.5rem;
+    justify-content: center;
+  }
+
+  .footer .text-lg-end {
+    text-align: center !important;
+    margin-top: 2rem;
+  }
+
+  #scrollTopBtn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 42px;
+    height: 42px;
+  }
+}

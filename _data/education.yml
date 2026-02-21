@@ -1,13 +1,13 @@
 - degree: 碩士學位
   institution: 國立高雄大學
   period: 2026 -
-  major: 資訊工程
-  description: 
+  major: 資訊工程學系
+  description: 持續深化研究能力，聚焦於軟體系統設計、人工智慧應用與資料工程等領域。
   image: /assets/images/schools/nku.jpg
 
 - degree: 學士學位
-  institution: 私立靜宜大學
+  institution: 靜宜大學
   period: 2021 - 2025
-  major: 資訊工程
-  description: 
+  major: 資訊工程學系
+  description: 積極參與專題實作、國科會大專生研究計畫，具備扎實的軟體開發基礎。
   image: /assets/images/schools/pu.jpg
