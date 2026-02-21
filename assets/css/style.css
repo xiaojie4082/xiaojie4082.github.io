@@ -102,25 +102,25 @@ section {
   position: relative;
 }
 
-/* 教育經歷 白底 */
+/* 教育經歷 — 淺石板，卡片白底浮出 */
 #education {
-  background: var(--bg-white);
-}
-
-/* 工作經驗 石板灰 */
-#experience {
   background: var(--bg-slate);
 }
 
-/* 專案作品 淺藍白 */
-#projects {
+/* 工作經驗 — 淺藍白，卡片白底浮出 */
+#experience {
   background: var(--bg-light);
 }
 
-/* 技能 白底 */
+/* 專案作品 — 石板灰，卡片白底浮出 */
+#projects {
+  background: var(--bg-slate);
+}
+
+/* 技能 — 淺藍白，卡片白底浮出 */
 #skills,
 .skills-section {
-  background: var(--bg-white);
+  background: var(--bg-light);
 }
 
 .section-title {
@@ -332,14 +332,14 @@ section {
    教育經歷卡片 (白底區塊內)
    ===================== */
 .education-timeline-content {
-  background: var(--bg-light);
+  background: var(--bg-white);
   border-radius: var(--radius);
   padding: 2rem;
   box-shadow: var(--card-shadow);
   transition: var(--transition);
   display: flex;
   overflow: hidden;
-  border: 1px solid #e0e7ff;
+  border: 1px solid rgba(37, 99, 235, 0.12);
 }
 
 .education-timeline-content:hover {
@@ -466,13 +466,13 @@ section {
    技能卡片 (白底區塊內)
    ===================== */
 .skill-category {
-  background: var(--bg-light);
+  background: var(--bg-white);
   border-radius: var(--radius);
   padding: 1.75rem;
   box-shadow: var(--card-shadow);
   margin-bottom: 2rem;
   transition: var(--transition);
-  border: 1px solid #e0e7ff;
+  border: 1px solid rgba(37, 99, 235, 0.12);
 }
 
 .skill-category:hover {
