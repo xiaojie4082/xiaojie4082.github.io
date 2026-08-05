@@ -1218,6 +1218,7 @@ section { padding: 5.5rem 0; position: relative; }
 .social-links a:hover { transform: translateY(-3px); }
 .social-links a.github-link:hover { background: rgba(36,41,46,0.8); color: white; border-color: rgba(255,255,255,0.2); }
 .social-links a.instagram-link:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; border-color: transparent; }
+.social-links a.email-link:hover { background: rgba(0, 212, 255, 0.15); color: var(--primary); border-color: rgba(0, 212, 255, 0.35); }
 
 .footer-divider { height: 1px; background: rgba(0,212,255,0.08); }
 
