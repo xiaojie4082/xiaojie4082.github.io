@@ -1,10 +1,9 @@
----
+﻿---
 layout: default
 title: 首頁
 ---
 
 <!-- SEO Meta 標籤 -->
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,10 +30,7 @@ title: 首頁
       "https://www.instagram.com/xiaojie4082"
     ],
     "jobTitle": "軟體開發者",
-    "description": "",
-    "knowsAbout": [
-      "網頁開發", "前端開發", "後端開發", "資料庫設計", "API 開發", "Python", "JavaScript"
-    ],
+    "knowsAbout": ["網頁開發","前端開發","後端開發","資料庫設計","API 開發","Python","JavaScript"],
     "alumniOf": {
       "@type": "CollegeOrUniversity",
       "name": "靜宜大學",
@@ -44,80 +40,123 @@ title: 首頁
   </script>
 </head>
 
-<!-- 個人資料區塊 -->
-<section id="about" class="profile-section">
-  <div class="container">
-    <div class="row align-items-center g-5">
-      <div class="col-lg-4 text-center">
-        <div class="profile-image-placeholder mb-4">
-          <img src="assets/images/profile.jpg" alt="小杰的個人照片" class="profile-image">
-        </div>
-      </div>
-      <div class="col-lg-8">
-        <p class="mb-2" style="color:#93c5fd;font-size:0.88rem;letter-spacing:0.15em;font-weight:700;">SOFTWARE
-          DEVELOPER</p>
-        <h1 class="display-4 fw-bold mb-3">你好，我是 <span style="color:#93c5fd;">小杰</span> 👋</h1>
-        <p class="lead mb-5"></p>
-        <div class="row profile-stats">
-          <div class="col-4 stat-item">
-            <div class="stat-number">2+</div>
-            <div class="stat-label">年工作經驗</div>
-          </div>
-          <div class="col-4 stat-item">
-            <div class="stat-number">5+</div>
-            <div class="stat-label">完成專案</div>
-          </div>
-          <div class="col-4 stat-item">
-            <div class="stat-number">10+</div>
-            <div class="stat-label">技術工具</div>
+<!-- ================================================
+     HERO SECTION
+     ================================================ -->
+<section id="about" class="hero-section">
+  <!-- 網格背景裝飾 -->
+  <div class="hero-bg-grid" aria-hidden="true"></div>
+
+  <div class="hero-content container">
+    <div class="hero-grid">
+
+      <!-- ── 左欄：個人資訊 ── -->
+      <div class="hero-left">
+        <!-- 大頭貼 -->
+        <div class="profile-avatar-wrap">
+          <div class="profile-image-placeholder">
+            <img src="assets/images/profile.jpg" alt="小杰的個人照片" class="profile-image">
           </div>
         </div>
+
+        <!-- 角色標籤 -->
+        <p class="role-badge">SOFTWARE DEVELOPER</p>
+
+        <!-- 姓名 -->
+        <h1 class="hero-title">你好，我是 <span class="text-neon">小杰</span> 👋</h1>
+
+        <!-- 打字機 -->
+        <div class="typing-line" aria-live="polite">
+          <span class="typing-prompt">&gt;&gt;</span>
+          <span id="typingText" class="typing-text"></span>
+          <span class="typing-cursor" aria-hidden="true">▌</span>
+        </div>
+
+        <!-- CTA 按鈕 -->
+        <div class="hero-cta">
+          <a href="#projects" class="btn-hero-primary" id="cta-projects">
+            查看專案 <i class="fas fa-arrow-right ms-1" style="font-size:0.8rem;"></i>
+          </a>
+          <a href="#footer" class="btn-hero-outline" id="cta-contact">聯絡我</a>
+        </div>
       </div>
+
+      <!-- ── 右欄：Terminal 視窗 ── -->
+      <div class="hero-right">
+        <div class="terminal-window" role="log" aria-label="互動式終端機展示">
+          <div class="terminal-titlebar">
+            <div class="terminal-dots" aria-hidden="true">
+              <span class="t-dot t-dot-red"></span>
+              <span class="t-dot t-dot-yellow"></span>
+              <span class="t-dot t-dot-green"></span>
+            </div>
+            <span class="terminal-title">xiaojie@dev: ~</span>
+          </div>
+          <div class="terminal-body" id="terminalBody"></div>
+        </div>
+      </div>
+
+    </div><!-- /hero-grid -->
+
+    <!-- ── Stats Bar ── -->
+    <div class="hero-stats-bar" aria-label="個人統計數據">
+      <div class="hero-stat">
+        <div class="stat-number">2+</div>
+        <div class="stat-label">年工作經驗</div>
+      </div>
+      <div class="hero-stat-divider" aria-hidden="true"></div>
+      <div class="hero-stat">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">完成專案</div>
+      </div>
+      <div class="hero-stat-divider" aria-hidden="true"></div>
+      <div class="hero-stat">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">技術工具</div>
+      </div>
+    </div>
+
+  </div><!-- /hero-content -->
+
+  <!-- 向下滾動指示 -->
+  <div class="scroll-down-indicator" aria-hidden="true" role="button" tabindex="0">
+    <span class="scroll-text">SCROLL</span>
+    <div class="scroll-arrow-wrap">
+      <i class="fas fa-chevron-down"></i>
     </div>
   </div>
 </section>
 
-<!-- 教育經歷 -->
-<section id="education" class="py-5">
-  <div class="container">
-    <h2 class="section-title text-center mb-5">教育經歷</h2>
-    <div class="timeline">
-      {% for edu in site.data.education %}
-      <div class="timeline-item">
-        <div class="education-timeline-content">
-          <div class="education-info">
-            <div class="timeline-date">{{ edu.period }}</div>
-            <h3 class="h4 mb-2">{{ edu.degree }}</h3>
-            <h4 class="h5 text-primary mb-3">{{ edu.institution }}</h4>
-            <!-- <p class="mb-2"><strong>主修：</strong>{{ edu.major }}</p> -->
-            {% if edu.description %}
-            <p class="mb-0 text-muted">{{ edu.description }}</p>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
 
-<!-- 工作經驗 -->
-<section id="experience" class="py-5 bg-light">
+<!-- ================================================
+     EXPERIENCE SECTION — 左右交錯時間軸
+     ================================================ -->
+<section id="experience">
   <div class="container">
-    <h2 class="section-title text-center mb-5">工作經驗</h2>
-    <div class="timeline">
+    <div class="section-header text-center">
+      <p class="section-pretitle">// WORK_HISTORY</p>
+      <h2 class="section-title">工作經驗</h2>
+    </div>
+
+    <div class="alt-timeline">
       {% for exp in site.data.experiences %}
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <div class="timeline-date">{{ exp.period }}</div>
-          <h3 class="h4 mb-2">{{ exp.title }}</h3>
-          <h4 class="h5 text-primary mb-3">{{ exp.company }}</h4>
-          <div class="mb-3 text-muted">{{ exp.description | markdownify }}</div>
+      {% assign pos = forloop.index | modulo: 2 %}
+      <div class="alt-timeline-item {% if pos == 1 %}alt-left{% else %}alt-right{% endif %}">
+        <div class="alt-timeline-dot" aria-hidden="true">
+          <div class="alt-timeline-dot-inner"></div>
+        </div>
+        <div class="alt-timeline-card">
+          <div class="alt-card-period">{{ exp.period }}</div>
+          <h3 class="alt-card-title">{{ exp.title }}</h3>
+          <h4 class="alt-card-company">{{ exp.company }}</h4>
+          <div class="alt-card-desc">{{ exp.description | markdownify }}</div>
+          {% if exp.tags %}
           <div class="project-tags">
             {% for tag in exp.tags %}
             <span class="project-tag">{{ tag }}</span>
             {% endfor %}
           </div>
+          {% endif %}
         </div>
       </div>
       {% endfor %}
@@ -125,29 +164,43 @@ title: 首頁
   </div>
 </section>
 
-<!-- 專案作品 -->
-<section id="projects" class="py-5">
+
+<!-- ================================================
+     PROJECTS SECTION — Bento Grid
+     ================================================ -->
+<section id="projects">
   <div class="container">
-    <h2 class="section-title text-center mb-5">專案作品</h2>
-    <div class="row g-4">
+    <div class="section-header text-center">
+      <p class="section-pretitle">// FEATURED_WORK</p>
+      <h2 class="section-title">專案作品</h2>
+    </div>
+
+    <div class="bento-grid">
       {% for project in site.data.projects %}
-      <div class="col-md-6 col-lg-4">
-        <div class="project-card">
-          <div class="project-content">
-            <h3 class="h5 mb-3">{{ project.title }}</h3>
-            <p class="mb-3 text-muted">{{ project.description }}</p>
-            <div class="project-tags">
-              {% for tag in project.tags %}
-              <span class="project-tag">{{ tag }}</span>
-              {% endfor %}
-            </div>
-            {% if project.link %}
-            <a href="{{ project.link }}" class="btn btn-outline-primary mt-3" target="_blank" rel="noopener"
-              aria-label="查看 {{ project.title }} 專案">
-              查看詳情 <i class="fas fa-arrow-right ms-1" style="font-size:0.75rem;"></i>
-            </a>
-            {% endif %}
+      <div class="bento-item {% if forloop.first %}bento-featured{% endif %}" id="project-{{ forloop.index }}">
+        {% if project.image %}
+        <div class="bento-image-wrap">
+          <img src="{{ project.image }}" alt="{{ project.title }}" class="bento-image" loading="lazy">
+          <div class="bento-image-overlay" aria-hidden="true"></div>
+        </div>
+        {% endif %}
+        <div class="bento-content">
+          {% if forloop.first %}
+          <span class="bento-badge">★ FEATURED</span>
+          {% endif %}
+          <h3 class="bento-title">{{ project.title }}</h3>
+          <p class="bento-desc">{{ project.description }}</p>
+          <div class="project-tags">
+            {% for tag in project.tags %}
+            <span class="project-tag">{{ tag }}</span>
+            {% endfor %}
           </div>
+          {% if project.link %}
+          <a href="{{ project.link }}" class="bento-link" target="_blank" rel="noopener"
+            aria-label="查看 {{ project.title }} 專案">
+            查看專案 <i class="fas fa-external-link-alt" style="font-size:0.72rem;"></i>
+          </a>
+          {% endif %}
         </div>
       </div>
       {% endfor %}
@@ -155,13 +208,20 @@ title: 首頁
   </div>
 </section>
 
-<!-- 專業技能 -->
+
+<!-- ================================================
+     SKILLS SECTION
+     ================================================ -->
 <section id="skills" class="skills-section">
   <div class="container">
-    <h2 class="section-title text-center mb-5">專業技能</h2>
+    <div class="section-header text-center">
+      <p class="section-pretitle">// TECH_STACK</p>
+      <h2 class="section-title">專業技能</h2>
+    </div>
+
     <div class="row g-4">
       {% for category in site.data.skills.categories %}
-      <div class="col-md-6 col-lg-4">
+      <div class="col-md-6 col-lg-3">
         <div class="skill-category">
           <h3 class="h5 mb-4">{{ category.name }}</h3>
           <div class="skill-tags">
@@ -179,4 +239,145 @@ title: 首頁
   </div>
 </section>
 
-</main>
+
+<!-- ================================================
+     EDUCATION SECTION — 橫向時間軸
+     ================================================ -->
+<section id="education">
+  <div class="container">
+    <div class="section-header text-center">
+      <p class="section-pretitle">// ACADEMIC_PATH</p>
+      <h2 class="section-title">教育背景</h2>
+    </div>
+
+    <div class="edu-timeline">
+      {% for edu in site.data.education %}
+      <div class="edu-card">
+        <div class="edu-card-glow" aria-hidden="true"></div>
+        <div class="edu-period">{{ edu.period }}</div>
+        <div class="edu-degree">{{ edu.degree }}</div>
+        <div class="edu-institution">{{ edu.institution }}</div>
+        {% if edu.description %}
+        <p class="edu-desc">{{ edu.description }}</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     頁面專屬 JavaScript — 打字機 & Terminal
+     ================================================ -->
+<script>
+(function () {
+  // ===== 打字機效果 =====
+  const typingTexts = [
+    '軟體開發者',
+    '資訊工程碩士生',
+    'Web Developer',
+    'AI 應用開發者',
+    'Full Stack Dev'
+  ];
+  let tIdx = 0, cIdx = 0, isDeleting = false;
+  const typingEl = document.getElementById('typingText');
+
+  function typeLoop() {
+    if (!typingEl) return;
+    const cur = typingTexts[tIdx];
+    if (!isDeleting) {
+      typingEl.textContent = cur.slice(0, cIdx + 1);
+      cIdx++;
+      if (cIdx === cur.length) {
+        isDeleting = true;
+        setTimeout(typeLoop, 1800);
+        return;
+      }
+    } else {
+      typingEl.textContent = cur.slice(0, cIdx - 1);
+      cIdx--;
+      if (cIdx === 0) {
+        isDeleting = false;
+        tIdx = (tIdx + 1) % typingTexts.length;
+      }
+    }
+    setTimeout(typeLoop, isDeleting ? 55 : 95);
+  }
+  typeLoop();
+
+  // ===== Terminal 動畫 =====
+  const lines = [
+    { type: 'cmd',  text: 'whoami' },
+    { type: 'out',  text: '小杰 — 軟體開發者 / 資工碩士生' },
+    { type: 'blank' },
+    { type: 'cmd',  text: 'skills --list' },
+    { type: 'out',  text: '[Frontend]  HTML · CSS · JS · Bootstrap' },
+    { type: 'out',  text: '[Backend]   Python · Flask · FastAPI · PHP' },
+    { type: 'out',  text: '[Database]  MySQL · SQLite' },
+    { type: 'out',  text: '[DevTools]  Git · Docker' },
+    { type: 'blank' },
+    { type: 'cmd',  text: 'github --open xiaojie4082' },
+    { type: 'link', text: 'github.com/xiaojie4082', href: 'https://github.com/xiaojie4082' },
+    { type: 'blank' },
+    { type: 'cmd',  text: 'status --check' },
+    { type: 'ok',   text: 'Open to new opportunities ✓' }
+  ];
+
+  const terminalBody = document.getElementById('terminalBody');
+  let lIdx = 0;
+
+  function runTerminal() {
+    if (!terminalBody || lIdx >= lines.length) return;
+    const line = lines[lIdx];
+
+    if (line.type === 'blank') {
+      const blank = document.createElement('div');
+      blank.className = 't-blank';
+      terminalBody.appendChild(blank);
+      lIdx++;
+      setTimeout(runTerminal, 200);
+      return;
+    }
+
+    const div = document.createElement('div');
+    div.classList.add('t-line', 't-' + line.type);
+
+    if (line.type === 'cmd') {
+      div.innerHTML = '<span class="t-prompt">xiaojie@dev:~$</span> <span class="t-cmd-text"></span><span class="t-cursor">▌</span>';
+      terminalBody.appendChild(div);
+      const cmdEl = div.querySelector('.t-cmd-text');
+      const curEl  = div.querySelector('.t-cursor');
+      let c = 0;
+      const iv = setInterval(() => {
+        cmdEl.textContent = line.text.slice(0, c + 1);
+        c++;
+        if (c === line.text.length) {
+          clearInterval(iv);
+          curEl.remove();
+          lIdx++;
+          setTimeout(runTerminal, 300);
+        }
+      }, 52);
+    } else if (line.type === 'link') {
+      div.innerHTML = '<span class="t-arrow">→</span> <a href="' + line.href + '" target="_blank" class="t-link">' + line.text + '</a>';
+      terminalBody.appendChild(div);
+      lIdx++;
+      setTimeout(runTerminal, 350);
+    } else if (line.type === 'ok') {
+      div.innerHTML = '<span class="t-ok">[OK]</span> <span style="color:#00ffb3;">' + line.text + '</span>';
+      terminalBody.appendChild(div);
+      lIdx++;
+      setTimeout(runTerminal, 350);
+    } else {
+      div.innerHTML = '<span class="t-arrow">→</span> ' + line.text;
+      terminalBody.appendChild(div);
+      lIdx++;
+      setTimeout(runTerminal, 320);
+    }
+    terminalBody.scrollTop = terminalBody.scrollHeight;
+  }
+
+  setTimeout(runTerminal, 900);
+})();
+</script>
