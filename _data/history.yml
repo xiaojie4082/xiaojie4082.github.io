@@ -1,6 +1,4 @@
-- title: 新增經歷標題
-  period: 2026/01 - 至今
-  description: 這裡可以填寫你的經歷描述、得獎紀錄或課外活動。
-  tags:
-    - 經歷標籤1
-    - 經歷標籤2
+- title: TANET 2024 台灣網際網路研討會
+  period: 2026/10
+  description: 發表論文 "以支援AI和聊天機器人為主的一個校園互動平台研究"
+  tags: 
