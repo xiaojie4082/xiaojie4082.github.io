@@ -886,6 +886,7 @@ section { padding: 5.5rem 0; position: relative; }
   font-weight: 700;
   font-size: 1.05rem;
   color: white;
+  margin-top: 0;
   margin-bottom: 0.5rem;
   text-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
@@ -896,6 +897,7 @@ section { padding: 5.5rem 0; position: relative; }
   font-size: 0.84rem;
   color: rgba(226,232,240,0.72);
   line-height: 1.65;
+  margin-top: 0;
   margin-bottom: 0.85rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;
