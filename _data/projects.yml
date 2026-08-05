@@ -1,18 +1,16 @@
 - title: 靜宜小幫手 Discord Bot
   description: |
-     為靜宜大學學生開發的 Discord 聊天機器人，整合校園資訊、氣象與交通查詢等功能，提升學生便利性。採用模組化設計，支援 AI 問答與多種自訂指令。
-  image: /assets/images/projects/pu_discord_bot.jpg
+    整合校園資訊、AI 問答與生活服務的 Discord Bot，提供學生快速查詢校園公告、氣象、交通等資訊，採用模組化架構設計，便於功能擴充與維護。
+  image: /
   tags:
     - Python
-    - Discord
-    - Gemini API
+    - Discord.py
   link: https://github.com/xiaojie4082/PU_Discord_Bot
 
 - title: 語音逐字稿與語者分離系統
   description: |
-    整合 OpenAI Whisper 與 pyannote.audio 的語音辨識與語者分離系統。
-    使用者可透過簡單的網頁介面，上傳音檔並自動產生逐字稿與講者標註，全程於 Docker 容器中運行，無須額外安裝環境。
-  image: /assets/images/projects/multi_whisper_speaker_ui.jpg
+    結合 OpenAI Whisper 與 pyannote.audio 建置的語音處理平台，可自動完成逐字稿與講者辨識，並透過 Docker 容器化部署提供即開即用的網頁服務。
+  image: /
   tags:
     - Python
     - OpenAI Whisper
@@ -21,11 +19,17 @@
 
 - title: 台中公車即時查詢系統
   description: |
-    提供台中市公車路線即時到站資訊查詢，支援深色/淺色主題與響應式設計。
-    系統每分鐘自動更新公車動態，顯示進站狀態及到站時間，介面友善易用。
-  image: /assets/images/projects/taichung_bus.jpg
+    整合台中市公車 TDX API，提供即時到站資訊查詢與動態更新。
+  image: /
   tags:
     - HTML
     - JavaScript
-    - TDX API
   link: https://xiaojie4082.github.io/Taichung_Bus/
+
+- title: 排球羽球場館預約平台
+  description: |
+    整合排球場租、羽球零打、成團管理、現場報到與 QR Code 憑證的排球羽球場館預約平台。
+  image: /
+  tags:
+    - Node.js
+  link: https://bookingsport.dpdns.org/
