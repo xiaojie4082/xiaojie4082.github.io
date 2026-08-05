@@ -5,10 +5,8 @@ categories:
         icon: fab fa-python
       - name: Node.js
         icon: fab fa-node-js
-      - name: PHP
-        icon: fab fa-php
       - name: C#
-        icon: fas fa-code
+        icon: fab fa-microsoft
 
   - name: Database
     skills:
