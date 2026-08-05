@@ -10,7 +10,7 @@ categories:
       - name: C#
         icon: fas fa-code
 
-  - name: 資料庫
+  - name: Database
     skills:
       - name: MySQL
         icon: fas fa-database
@@ -19,16 +19,12 @@ categories:
 
   - name: AI / LLM
     skills:
-      - name: OpenAI API
-        icon: fas fa-robot
       - name: LangChain
         icon: fas fa-link
-      - name: ChromaDB
-        icon: fas fa-layer-group
       - name: RAG
         icon: fas fa-search
 
-  - name: 開發工具
+  - name: DevTools
     skills:
       - name: Git
         icon: fab fa-git-alt
