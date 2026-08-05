@@ -24,10 +24,10 @@ title: 首頁
         </div>
 
         <!-- 角色標籤 -->
-        <p class="role-badge">SOFTWARE DEVELOPER</p>
+        <!-- <p class="role-badge">SOFTWARE DEVELOPER</p> -->
 
         <!-- 姓名 -->
-        <h1 class="hero-title">我是<span class="text-neon">XIAOJIE4082</span>，很高興認識你 👋</h1>
+        <h1 class="hero-title">我是<span class="text-neon">XIAOJIE4082</span> 👋</h1>
 
         <!-- 打字機 -->
         <div class="typing-line" aria-live="polite">
@@ -219,8 +219,8 @@ title: 首頁
       <div class="edu-card">
         <div class="edu-card-glow" aria-hidden="true"></div>
         <div class="edu-period">{{ edu.period }}</div>
-        <div class="edu-degree">{{ edu.degree }}</div>
-        <div class="edu-institution">{{ edu.institution }}</div>
+        <div class="edu-degree">{{ edu.institution }}</div>
+        <div class="edu-institution">{{ edu.degree }}</div>
         {% if edu.description %}
         <p class="edu-desc">{{ edu.description }}</p>
         {% endif %}
@@ -238,10 +238,9 @@ title: 首頁
   (function () {
     // ===== 打字機效果 =====
     const typingTexts = [
-      '軟體開發者',
-      '資訊工程',
+      'Software Developer',
       'Web Developer',
-      'AI 應用開發者'
+      'AI Application Developer'
     ];
     let tIdx = 0, cIdx = 0, isDeleting = false;
     const typingEl = document.getElementById('typingText');
@@ -272,11 +271,10 @@ title: 首頁
     // ===== Terminal 動畫 =====
     const lines = [
       { type: 'cmd', text: 'whoami' },
-      { type: 'out', text: 'XIAOJIE4082 — Software Developer' },
+      { type: 'out', text: 'XIAOJIE4082' },
       { type: 'blank' },
       { type: 'cmd', text: 'skills --list' },
-      { type: 'out', text: '[Frontend]  HTML · CSS · JavaScript' },
-      { type: 'out', text: '[Backend]   Flask · FastAPI · Node.js · PHP' },
+      { type: 'out', text: '[Language]  Python · Node.js · PHP · C#' },
       { type: 'out', text: '[Database]  MySQL · PostgreSQL' },
       { type: 'out', text: '[AI/LLM]    OpenAI API · LangChain · ChromaDB · RAG' },
       { type: 'out', text: '[DevTools]  Git · Docker' },

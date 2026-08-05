@@ -1,25 +1,14 @@
 categories:
-  - name: 前端開發
-    skills:
-      - name: HTML
-        icon: fab fa-html5
-      - name: CSS
-        icon: fab fa-css3-alt
-      - name: JavaScript
-        icon: fab fa-js
-
-  - name: 後端開發
+  - name: Language
     skills:
       - name: Python
         icon: fab fa-python
-      - name: Flask
-        icon: fas fa-flask
-      - name: FastAPI
-        icon: fas fa-bolt
       - name: Node.js
         icon: fab fa-node-js
       - name: PHP
         icon: fab fa-php
+      - name: C#
+        icon: fas fa-code
 
   - name: 資料庫
     skills:
