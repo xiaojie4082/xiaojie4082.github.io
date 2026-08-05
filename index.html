@@ -93,6 +93,32 @@ title: 首頁
 
 
 <!-- ================================================
+     EDUCATION SECTION — 橫向時間軸
+     ================================================ -->
+<section id="education">
+  <div class="container">
+    <div class="section-header text-center">
+      <p class="section-pretitle">// ACADEMIC_PATH</p>
+      <h2 class="section-title">教育背景</h2>
+    </div>
+
+    <div class="edu-timeline">
+      {% for edu in site.data.education %}
+      <div class="edu-card">
+        <div class="edu-card-glow" aria-hidden="true"></div>
+        <div class="edu-period">{{ edu.period }}</div>
+        <div class="edu-degree">{{ edu.institution }}</div>
+        <div class="edu-institution">{{ edu.degree }}</div>
+        {% if edu.description %}
+        <p class="edu-desc">{{ edu.description }}</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
      EXPERIENCE SECTION — 左右交錯時間軸
      ================================================ -->
 <section id="experience">
@@ -128,6 +154,35 @@ title: 首頁
   </div>
 </section>
 
+<!-- ================================================
+     SKILLS SECTION
+     ================================================ -->
+<section id="skills" class="skills-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <p class="section-pretitle">// TECH_STACK</p>
+      <h2 class="section-title">專業技能</h2>
+    </div>
+
+    <div class="row g-4">
+      {% for category in site.data.skills.categories %}
+      <div class="col-md-6 col-lg-3">
+        <div class="skill-category">
+          <h3 class="h5 mb-4">{{ category.name }}</h3>
+          <div class="skill-tags">
+            {% for skill in category.skills %}
+            <div class="skill-tag">
+              <i class="{{ skill.icon }}" aria-hidden="true"></i>
+              <span>{{ skill.name }}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
 <!-- ================================================
      PROJECTS SECTION — Bento Grid
@@ -172,58 +227,35 @@ title: 首頁
   </div>
 </section>
 
-
 <!-- ================================================
-     SKILLS SECTION
+     HISTORY SECTION — 經歷
      ================================================ -->
-<section id="skills" class="skills-section">
+<section id="history">
   <div class="container">
     <div class="section-header text-center">
-      <p class="section-pretitle">// TECH_STACK</p>
-      <h2 class="section-title">專業技能</h2>
+      <p class="section-pretitle">// OTHER_ACTIVITIES</p>
+      <h2 class="section-title">經歷</h2>
     </div>
 
-    <div class="row g-4">
-      {% for category in site.data.skills.categories %}
-      <div class="col-md-6 col-lg-3">
-        <div class="skill-category">
-          <h3 class="h5 mb-4">{{ category.name }}</h3>
-          <div class="skill-tags">
-            {% for skill in category.skills %}
-            <div class="skill-tag">
-              <i class="{{ skill.icon }}" aria-hidden="true"></i>
-              <span>{{ skill.name }}</span>
-            </div>
+    <div class="alt-timeline">
+      {% for hist in site.data.history %}
+      {% assign pos = forloop.index | modulo: 2 %}
+      <div class="alt-timeline-item {% if pos == 1 %}alt-left{% else %}alt-right{% endif %}">
+        <div class="alt-timeline-dot" aria-hidden="true">
+          <div class="alt-timeline-dot-inner"></div>
+        </div>
+        <div class="alt-timeline-card">
+          <div class="alt-card-period">{{ hist.period }}</div>
+          <h3 class="alt-card-title">{{ hist.title }}</h3>
+          <div class="alt-card-desc">{{ hist.description | markdownify }}</div>
+          {% if hist.tags %}
+          <div class="project-tags">
+            {% for tag in hist.tags %}
+            <span class="project-tag">{{ tag }}</span>
             {% endfor %}
           </div>
+          {% endif %}
         </div>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-
-<!-- ================================================
-     EDUCATION SECTION — 橫向時間軸
-     ================================================ -->
-<section id="education">
-  <div class="container">
-    <div class="section-header text-center">
-      <p class="section-pretitle">// ACADEMIC_PATH</p>
-      <h2 class="section-title">教育背景</h2>
-    </div>
-
-    <div class="edu-timeline">
-      {% for edu in site.data.education %}
-      <div class="edu-card">
-        <div class="edu-card-glow" aria-hidden="true"></div>
-        <div class="edu-period">{{ edu.period }}</div>
-        <div class="edu-degree">{{ edu.institution }}</div>
-        <div class="edu-institution">{{ edu.degree }}</div>
-        {% if edu.description %}
-        <p class="edu-desc">{{ edu.description }}</p>
-        {% endif %}
       </div>
       {% endfor %}
     </div>
