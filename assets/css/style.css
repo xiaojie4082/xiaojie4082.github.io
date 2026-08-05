@@ -759,7 +759,8 @@ section { padding: 5.5rem 0; position: relative; }
 .alt-card-desc li { margin-bottom: 0.2rem; }
 
 /* Project Tags */
-.project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+.project-tags {
+  margin-top: auto; display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
 .project-tag {
   display: inline-block;
@@ -786,7 +787,6 @@ section { padding: 5.5rem 0; position: relative; }
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 320px;
   gap: 1.25rem;
 }
 
@@ -863,7 +863,7 @@ section { padding: 5.5rem 0; position: relative; }
   z-index: 2;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   height: 100%;
   padding: 1.75rem;
 }
